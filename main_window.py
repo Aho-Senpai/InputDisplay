@@ -3,7 +3,7 @@ import tkinter as tk
 window = tk.Tk()
 window.minsize(200, 200)
 
-button = tk.Button(text="a")
+button = tk.Button(text="a", state="disabled", font="Arial")
 button.pack()
 
 
@@ -16,6 +16,8 @@ def update_btn_alpha(key, sender):
         button['text'] = 'a'
 
     if (f'{key}' == "'a'" or f'{key}' == "'A'") and sender == 'kb_press':
-        button["bg"] = "red"
+        button["bg"] = "grey"
+        button["fg"] = "white"
     elif (f'{key}' == "'a'" or f'{key}' == "'A'") and sender == 'kb_release':
-        button['bg'] = "SystemButtonFace"
+        button["bg"] = "SystemButtonFace"
+        button["fg"] = "black"
