@@ -1,16 +1,13 @@
 from pynput import keyboard, mouse
-import main_window
+# import main_window as mw
 
 
 def kb_on_press(key):
     print(f"{key} pressed")
-    # main_window.button["text"] = f"{key}" # This works, commented for latter reference.
-    main_window.update_btn_alpha(key, sender='kb_press')
 
 
 def kb_on_release(key):
     print(f"{key} released")
-    main_window.update_btn_alpha(key, sender='kb_release')
 
 
 def mouse_on_move(x, y):

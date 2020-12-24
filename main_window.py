@@ -1,23 +1,16 @@
+# import kivy.app
+# import keyboard
 import tkinter as tk
+# import tkinter.ttk as ttk
+import kb_layout
 
-window = tk.Tk()
-window.minsize(200, 200)
+root = tk.Tk()
+root.title("Virtual Keyboard")
+root.attributes("-topmost", True)
+# root.overrideredirect(1)    # Remove border
+root.eval('tk::PlaceWindow . center')
 
-button = tk.Button(text="a", state="disabled", font="Arial")
-button.pack()
 
-
-def update_btn_alpha(key, sender):
-    if (f'{key}' == 'Key.shift') and (sender == 'kb_press'):
-        # Change a-z buttons to A-Z
-        button['text'] = 'A'
-    elif (f'{key}' == 'Key.shift') and (sender == 'kb_release'):
-        # Change A-Z buttons to a-z
-        button['text'] = 'a'
-
-    if (f'{key}' == "'a'" or f'{key}' == "'A'") and sender == 'kb_press':
-        button["bg"] = "grey"
-        button["fg"] = "white"
-    elif (f'{key}' == "'a'" or f'{key}' == "'A'") and sender == 'kb_release':
-        button["bg"] = "SystemButtonFace"
-        button["fg"] = "black"
+for key in kb_layout.ANSI_TKL:
+    print("x:" + str(key['Pos'][0]) + "-" + "y:" + str(key['Pos'][1]))
+    tk.Button(root, text=key['Key']).grid(row=key['Pos'][0], column=['Pos'][1])
