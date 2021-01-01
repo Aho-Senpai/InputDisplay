@@ -4,4 +4,5 @@ import main_window as mw
 if __name__ == '__main__':
     ie.kb_events()
     # ie.mouse_events()
+    mw.make_keys()
     mw.root.mainloop()
