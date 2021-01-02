@@ -30,9 +30,12 @@ def btn_txt(key):
         return text
 
 
+btn_list = []
+
+
 def make_keys():
+    image = tk.PhotoImage(width=1, height=1)
     for key in kb_layout.ANSI_TKL:
-        image = tk.PhotoImage(width=1, height=1)
         if key['Key'] == 'SPACER':
             tk.Button(root, width=int(key['Size'][1] * 4), height=2, state='disabled', borderwidth=0)\
                 .grid(row=key['Pos'][0], column=int(key['Pos'][1] * 4), columnspan=int(key['Size'][1] * 4),
@@ -42,11 +45,12 @@ def make_keys():
                             compound='c')
             btn.grid(row=key['Pos'][0], column=int(key['Pos'][1] * 4), columnspan=int(key['Size'][1] * 4),
                      sticky="NESW")
+            btn_list.append(btn)
 
 
 def show_kb_press(k, sender):
     if sender == 'kb_press':
         print(str(k) + ' press')
 
-#     elif sender == 'kb_release':
-# print('release')
+#    elif sender == 'kb_release':
+#        print('release')
