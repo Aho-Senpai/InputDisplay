@@ -45,12 +45,15 @@ def make_keys():
                             compound='c')
             btn.grid(row=key['Pos'][0], column=int(key['Pos'][1] * 4), columnspan=int(key['Size'][1] * 4),
                      sticky="NESW")
-            btn_list.append(btn)
+            btn_list.append({'Key': key['Key'], 'btn': btn})
 
 
 def show_kb_press(k, sender):
     if sender == 'kb_press':
-        print(str(k) + ' press')
+        for i in btn_list:
+            if i['Key'] == 'k':
+                print(i['btn'])
+                i['btn'].config(bg='red')
 
 #    elif sender == 'kb_release':
 #        print('release')
