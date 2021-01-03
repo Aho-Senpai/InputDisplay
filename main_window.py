@@ -5,7 +5,7 @@ import kb_layout
 import main as m
 
 root = tk.Tk()
-root.title("Virtual Keyboard")
+root.title("InputDisplay")
 root.attributes("-topmost", True)
 # root.overrideredirect(1)    # Remove border
 root.eval('tk::PlaceWindow . center')
@@ -47,14 +47,26 @@ def make_keys():
             btn_list.append({'Key': key['Key'], 'btn': btn})
 
 
+def show_shift_keys(up):
+    for i in kb_layout.ANSI_TKL:
+        if 'Shift' in i:
+            for j in btn_list:
+                if repr(j['Key']) == repr(i['Key']):
+                    if up == 'up':
+                        j['btn'].config(text=i['Shift'])
+                    elif up == 'down':
+                        j['btn'].config(text=btn_txt(i))
+
+
 def show_kb_press(k, sender):
     if sender == 'kb_press':
-        print(k)
         for i in btn_list:
             if repr(i['Key']) == repr(k):
                 i['btn'].config(bg='red')
             elif i['Key'] == str(k):
                 i['btn'].config(bg='red')
+        if repr(str(k)) == repr('Key.shift') or repr(str(k)) == repr('Key.shift_r'):
+            show_shift_keys(up='up')
 
     elif sender == 'kb_release':
         for i in btn_list:
@@ -62,3 +74,5 @@ def show_kb_press(k, sender):
                 i['btn'].config(bg='grey')
             elif i['Key'] == str(k):
                 i['btn'].config(bg='grey')
+        if repr(str(k)) == repr('Key.shift') or repr(str(k)) == repr('Key.shift_r'):
+            show_shift_keys(up='down')
