@@ -50,9 +50,11 @@ def make_keys():
 
 def show_kb_press(k, sender):
     if sender == 'kb_press':
+        print(k)
         for i in btn_list:
-            if i['Key'] == 'k':
-                print(i['btn'])
+            if repr(i['Key']) == repr(k):
+                i['btn'].config(bg='red')
+            elif i['Key'] == str(k):
                 i['btn'].config(bg='red')
 
 #    elif sender == 'kb_release':

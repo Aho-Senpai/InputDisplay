@@ -9,5 +9,5 @@ if __name__ == '__main__':
     ie.kb_events()
     # ie.mouse_events()
     mw.make_keys()
-    print(mw.btn_list)
+    # print(mw.btn_list)
     mw.root.mainloop()
