@@ -2,7 +2,7 @@ import input_events as ie
 import main_window as mw
 
 
-btn_size = 50
+btn_size = 6
 
 
 if __name__ == '__main__':
