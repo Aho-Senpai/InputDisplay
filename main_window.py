@@ -44,7 +44,10 @@ def make_keys():
                             compound='c')
             btn.grid(row=key['Pos'][0], column=int(key['Pos'][1] * 4), columnspan=int(key['Size'][1] * 4),
                      sticky="NESW")
-            btn_list.append({'Key': key['Key'], 'btn': btn})
+            if 'Shift' in key:
+                btn_list.append({'Key': key['Key'], 'btn': btn, 'Shift': key['Shift']})
+            else:
+                btn_list.append({'Key': key['Key'], 'btn': btn})
 
 
 def show_shift_keys(up):
@@ -63,6 +66,9 @@ def show_kb_press(k, sender):
         for i in btn_list:
             if repr(i['Key']) == repr(k):
                 i['btn'].config(bg='red')
+            elif 'Shift' in i:
+                if repr(i['Shift']) == repr(k):
+                    i['btn'].config(bg='red')
             elif i['Key'] == str(k):
                 i['btn'].config(bg='red')
         if repr(str(k)) == repr('Key.shift') or repr(str(k)) == repr('Key.shift_r'):
@@ -72,6 +78,9 @@ def show_kb_press(k, sender):
         for i in btn_list:
             if repr(i['Key']) == repr(k):
                 i['btn'].config(bg='grey')
+            elif 'Shift' in i:
+                if repr(i['Shift']) == repr(k):
+                    i['btn'].config(bg='grey')
             elif i['Key'] == str(k):
                 i['btn'].config(bg='grey')
         if repr(str(k)) == repr('Key.shift') or repr(str(k)) == repr('Key.shift_r'):
