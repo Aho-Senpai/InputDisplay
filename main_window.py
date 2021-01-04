@@ -3,6 +3,7 @@ import tkinter as tk
 # import tkinter.ttk as ttk
 import kb_layout
 import main as m
+import ctrl_combo as cc
 
 root = tk.Tk()
 root.title("InputDisplay")
@@ -71,9 +72,13 @@ def show_kb_press(k, sender):
                     i['btn'].config(bg='red')
             elif i['Key'] == str(k):
                 i['btn'].config(bg='red')
+            for j in cc.CTRL_COMBO:
+                if repr(k) == repr(j['combo']) and repr(i['Key']) == repr(j['key']):
+                    i['btn'].config(bg='red')
+                elif repr(str(k)) == repr(str(j['combo'])) and repr(i['Key']) == repr(j['key']):
+                    i['btn'].config(bg='red')
         if repr(str(k)) == repr('Key.shift') or repr(str(k)) == repr('Key.shift_r'):
             show_shift_keys(up='up')
-
     elif sender == 'kb_release':
         for i in btn_list:
             if repr(i['Key']) == repr(k):
@@ -83,5 +88,10 @@ def show_kb_press(k, sender):
                     i['btn'].config(bg='grey')
             elif i['Key'] == str(k):
                 i['btn'].config(bg='grey')
+            for j in cc.CTRL_COMBO:
+                if repr(k) == repr(j['combo']) and repr(i['Key']) == repr(j['key']):
+                    i['btn'].config(bg='grey')
+                elif repr(str(k)) == repr(str(j['combo'])) and repr(i['Key']) == repr(j['key']):
+                    i['btn'].config(bg='grey')
         if repr(str(k)) == repr('Key.shift') or repr(str(k)) == repr('Key.shift_r'):
             show_shift_keys(up='down')
