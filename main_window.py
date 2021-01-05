@@ -8,7 +8,7 @@ root.title("InputDisplay")
 root.attributes("-topmost", True)
 # root.overrideredirect(1)    # Remove border
 root.eval('tk::PlaceWindow . center')
-
+#comment_to_delete
 
 def btn_txt(key):
     if key['Key'] == 'SPACER':
