@@ -1,13 +1,13 @@
 from pynput import keyboard, mouse
-import main_window as mw
+from Source import draw_keyboard as dw
 
 
 def kb_on_press(key):
-    mw.show_kb_press(key, sender='kb_press')
+    dw.show_kb_press(key, sender='kb_press')
 
 
 def kb_on_release(key):
-    mw.show_kb_press(key, sender='kb_release')
+    dw.show_kb_press(key, sender='kb_release')
 
 
 def mouse_on_move(x, y):
