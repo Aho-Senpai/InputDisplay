@@ -6,3 +6,8 @@ what does it do ?
 fair warning : you'll need to run it as admin to have it work with some games
 
 more documentation WIP
+
+todo :
+ - add mouse events
+ - try to handle caps lock?
+ - make settings and all that BS
