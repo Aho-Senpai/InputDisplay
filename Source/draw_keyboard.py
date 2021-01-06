@@ -1,15 +1,15 @@
-from Source import \
+from Source import\
     kb_layout,\
     ctrl_combo as cc,\
     main_window as mw
+import tkinter as tk
 
 
-# This will need to change where it's drawn, will prob need to make a frame and put it in there
-# (mainly for mouse inputs, as well as options and settings)
-# or, make it draw another window when the user click a button, to have a clean window without borders and all
+# todo : (OPTION) might make it draw another window when the user click a button,
+#       to have a clean window without borders and all
 
 # todo : handle caps_lock and scroll_lock to have a little "glow?" on them when active, see if it's doable to get
-#  their states somehow
+#       their states somehow
 # todo : also make all alphabet letters caps when caps_lock is active, if previous point is doable
 
 
@@ -40,6 +40,8 @@ def btn_txt(key):
 
 
 btn_list = []
+keyboard_frame = tk.Frame(mw.kb_m_frame, bd=5, relief='groove')
+keyboard_frame.pack(side='left')
 
 
 def make_keys():
@@ -47,13 +49,13 @@ def make_keys():
     for key in kb_layout.ANSI_TKL:
         # Handles the spacer to uhh, add spaces between the buttons so it looks like an actual keyboard
         if key['Key'] == 'SPACER':
-            mw.tk.Button(mw.root, width=int(key['Size'][1]*4), height=int(key['Size'][0]*2), state='disabled',
-                         borderwidth=0)\
+            tk.Button(keyboard_frame, width=int(key['Size'][1] * 4), height=int(key['Size'][0] * 2), state='disabled',
+                      borderwidth=0) \
                 .grid(row=key['Pos'][0], column=int(key['Pos'][1] * 4), columnspan=int(key['Size'][1] * 4),
                       sticky="NESW")
-        else:   # aka if it's not a spacer
+        else:  # aka if it's not a spacer
             # Here, the width and height are in text units? so we need to divide height by 2 to have a square
-            btn = mw.tk.Button(mw.root, text=btn_txt(key), width=mw.btn_size, height=int(mw.btn_size/2), bg='grey')
+            btn = tk.Button(keyboard_frame, text=btn_txt(key), width=mw.btn_size, height=int(mw.btn_size / 2), bg='grey')
             # sticky="NESW" is needed to have nicely aligned buttons
             btn.grid(row=key['Pos'][0], column=int(key['Pos'][1] * 4), columnspan=int(key['Size'][1] * 4),
                      sticky="NESW")

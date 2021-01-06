@@ -1,26 +1,30 @@
-from pynput import keyboard, mouse
-from Source import draw_keyboard as dw
+from pynput import\
+    keyboard,\
+    mouse
+from Source import\
+    draw_keyboard as dk,\
+    draw_mouse as dm
 
 
 def kb_on_press(key):
-    dw.show_kb_press(key, sender='kb_press')
+    dk.show_kb_press(key, sender='kb_press')
 
 
 def kb_on_release(key):
-    dw.show_kb_press(key, sender='kb_release')
+    dk.show_kb_press(key, sender='kb_release')
 
 
 def mouse_on_move(x, y):
-    print(f"Mouse moved to ({x}, {y})")
+    # print(f"Mouse moved to ({x}, {y})")
+    return
 
 
 def mouse_on_click(x, y, button, pressed):
-    if pressed:
-        print(f'Mouse clicked at ({x}, {y}) with {button}')
+    dm.show_mouse_click(button, pressed)
 
 
 def mouse_on_scroll(x, y, dx, dy):
-    print(f'Mouse scrolled at ({x}, {y})({dx}, {dy})')
+    dm.show_mouse_scroll(dy)
 
 
 def kb_events():
