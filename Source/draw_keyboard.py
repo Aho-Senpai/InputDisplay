@@ -50,7 +50,7 @@ def make_keys():
         # Handles the spacer to uhh, add spaces between the buttons so it looks like an actual keyboard
         if key['Key'] == 'SPACER':
             tk.Button(keyboard_frame, width=int(key['Size'][1] * 4), height=int(key['Size'][0] * 2), state='disabled',
-                      borderwidth=0) \
+                      borderwidth=0)\
                 .grid(row=key['Pos'][0], column=int(key['Pos'][1] * 4), columnspan=int(key['Size'][1] * 4),
                       sticky="NESW")
         else:  # aka if it's not a spacer

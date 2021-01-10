@@ -15,7 +15,7 @@ def kb_on_release(key):
 
 
 def mouse_on_move(x, y):
-    # print(f"Mouse moved to ({x}, {y})")
+    # dm.show_mouse_movement(x, y)
     return
 
 
