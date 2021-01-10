@@ -1,6 +1,7 @@
 # InputDisplay
 
-[Archived] : Will try again later or in another language
+[Archived] : Will try again later or in another language  
+PR and Suggestions are welcome tho
 
 what does it do ?
 - it show you your inputs (only keyboard for now)
